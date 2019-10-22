@@ -1,0 +1,88 @@
+@import "fonts";
+@import "breakpoints";
+
+$primary-font: "Nunito", sans-serif;
+$secondary-font: "Kodchasan", sans-serif;
+$primary-color: #41af60;
+$gradient: linear-gradient(
+  45deg,
+  rgba(34, 127, 227, 0.8) 0%,
+  rgba(34, 127, 227, 0.8) 23%,
+  rgba(34, 127, 227, 0.8) 24%,
+  rgba(34, 227, 163, 0.8) 99%,
+  rgba(32, 227, 39, 0.8) 100%
+);
+$gradientHover: linear-gradient(
+  45deg,
+  rgba(34, 127, 227, 0.8) 0%,
+  rgba(0, 162, 255, 1) 25%,
+  rgba(0, 191, 255, 1) 54%,
+  rgba(0, 208, 255, 1) 77%,
+  rgb(0, 204, 204) 100%
+);
+$main-fontsize: 18px;
+$shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.36);
+$side-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.36);
+$bottom-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.36);
+$top-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.36);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  font-family: $primary-font;
+  background-color: white;
+  font-weight: lighter;
+  color: #3d3d3d;
+
+  @include extra-small-screen() {
+    h1,
+    h2 {
+      font-size: 22px;
+    }
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+p {
+  line-height: 1.9;
+}
+
+h1 {
+  margin: 0;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+button {
+  outline: none;
+}

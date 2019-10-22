@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?evkda');
+  src: url('../fonts/icomoon.eot?evkda#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?evkda') format('truetype'),
+      url('../fonts/icomoon.woff?evkda') format('woff'),
+      url('../fonts/icomoon.svg?evkda#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-automation:before {
+  content: "\e900";
+}
+.icon-community-management:before {
+  content: "\e901";
+}
+.icon-desktop:before {
+  content: "\e902";
+}
+.icon-gaming:before {
+  content: "\e903";
+}
+.icon-hosting:before {
+  content: "\e904";
+}
+.icon-integrations:before {
+  content: "\e905";
+}
+.icon-mobile:before {
+  content: "\e906";
+}
+.icon-salesforce:before {
+  content: "\e907";
+}
