@@ -4,17 +4,12 @@ export default class AccordionContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { activeItem: null };
-		this.setActiveItem = this.setActiveItem.bind(this);
-		this.getActiveItem = this.getActiveItem.bind(this);
-	}
-	
-	setActiveItem(value) {
-		this.setState({ activeItem: value });
+		this.state = { activeItem: 999 }
+		this.showSelectedItem = this.showSelectedItem.bind(this);
 	}
 
-	getActiveItem() {
-		return this.state.activeItem;
+	showSelectedItem(value) {
+		this.setState({ activeItem: value });
 	}
 
 	render() {

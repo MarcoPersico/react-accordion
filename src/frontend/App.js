@@ -21,13 +21,13 @@ class App extends React.Component {
 
 		this.Accordion = React.createRef();
 		this.renderItems = this.renderItems.bind(this);
-		this.state = { propsAccordionContainer: null, getActiveItem: null }
+		this.updateComponent = this.updateComponent.bind(this);
+		this.state = { showSelectedItem: null, getActiveItem: null }
 	}
 
 	componentDidMount() {
 		this.setState({
-			propsAccordionContainer: this.Accordion.current.setActiveItem,
-			getActiveItem: this.Accordion.current.getActiveItem,
+			showSelectedItem: this.Accordion.current.showSelectedItem,
 		});
 	}
 
@@ -36,12 +36,18 @@ class App extends React.Component {
 			key={index}
 			index={index}
 			value={item.name}
-			setActiveItem={this.state.propsAccordionContainer}
-			getActiveItem={this.state.getActiveItem}
+			onItemSelected={this.state.showSelectedItem}
+			clickedItem={this.state.clickedItem}
+			onSelectionChange={this.updateComponent}
 		/>;
 	}
 
+	updateComponent(value) {
+		this.setState({ clickedItem: value })
+	}
+
 	render() {
+		console.log(this.state.clickedItem)
 		return (
 			<AccordionContainer ref={this.Accordion}>
 				{MOCKED_ITEMS.map(this.renderItems)}

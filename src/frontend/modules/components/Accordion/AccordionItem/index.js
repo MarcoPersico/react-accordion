@@ -3,21 +3,10 @@ import React from 'react';
 class AccordionItem extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = { isPanelVisible: false };
-	}
-
-	updatePanelStatus() {
-		this.props.setActiveItem(this.props.index);
-		this.renderPanel();
-	}
-
-	setActiveItem() {
 	}
 
 	renderPanel() {
-		debugger
-		if (this.props.index === this.props.getActiveItem()) {
+		if (this.props.clickedItem === this.props.index) {
 			return (
 				<div>
 					<li>Item1</li>
@@ -29,15 +18,20 @@ class AccordionItem extends React.Component {
 		}
 	}
 
+	openItem() {
+		this.props.onItemSelected(this.props.index);
+		this.props.onSelectionChange(this.props.index);
+	}
+
 	render() {
-		console.log(this.props)
 		return (
 			<div>
 				<button
-					onClick={() => this.updatePanelStatus(!this.state.isPanelVisible)}
+					onClick={() => this.openItem()}
 				>
 					{this.props.value}
 				</button>
+				{this.renderPanel()}
 			</div>
 		);
 	}
