@@ -6,7 +6,8 @@ class AccordionItem extends React.Component {
 	}
 
 	renderPanel() {
-		if (this.props.clickedItem === this.props.index) {
+		const { activeItem, index } = this.props;
+		if (activeItem === index) {
 			return (
 				<div>
 					<li>Item1</li>
@@ -18,18 +19,14 @@ class AccordionItem extends React.Component {
 		}
 	}
 
-	openItem() {
-		this.props.onItemSelected(this.props.index);
-		this.props.onSelectionChange(this.props.index);
-	}
-
 	render() {
+		const { onItemClicked, index, value } = this.props;
 		return (
 			<div>
 				<button
-					onClick={() => this.openItem()}
+					onClick={() => onItemClicked(index)}
 				>
-					{this.props.value}
+					{value}
 				</button>
 				{this.renderPanel()}
 			</div>

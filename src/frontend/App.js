@@ -5,13 +5,16 @@ import { AccordionContainer, AccordionItem } from './modules/components/Accordio
 
 const MOCKED_ITEMS = [
 	{
-		"name": "item1"
+		"name": "item1",
+		"id": 1
 	},
 	{
-		"name": "item2"
+		"name": "item2",
+		"id": 2
 	},
 	{
-		"name": "item3"
+		"name": "item3",
+		"id": 3
 	}
 ]
 
@@ -19,37 +22,19 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.Accordion = React.createRef();
-		this.renderItems = this.renderItems.bind(this);
-		this.updateComponent = this.updateComponent.bind(this);
-		this.state = { showSelectedItem: null, getActiveItem: null }
-	}
-
-	componentDidMount() {
-		this.setState({
-			showSelectedItem: this.Accordion.current.showSelectedItem,
-		});
 	}
 
 	renderItems(item, index) {
 		return <AccordionItem
-			key={index}
+			key={item.id}
 			index={index}
 			value={item.name}
-			onItemSelected={this.state.showSelectedItem}
-			clickedItem={this.state.clickedItem}
-			onSelectionChange={this.updateComponent}
 		/>;
 	}
 
-	updateComponent(value) {
-		this.setState({ clickedItem: value })
-	}
-
 	render() {
-		console.log(this.state.clickedItem)
 		return (
-			<AccordionContainer ref={this.Accordion}>
+			<AccordionContainer>
 				{MOCKED_ITEMS.map(this.renderItems)}
 			</AccordionContainer>
 		);
