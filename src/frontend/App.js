@@ -1,40 +1,45 @@
 import React from 'react';
 
+// App Config
+import AppConfiguration from './services/AppConfiguration';
+import frontendConfig from '../../config/frontend/frontend.config';
+
+// Set app config
+AppConfiguration.setConfig(frontendConfig);
+
 // Components
 import { AccordionContainer, AccordionItem } from './modules/components/Accordion';
 
-const MOCKED_ITEMS = [
-	{
-		"name": "item1",
-		"id": 1
-	},
-	{
-		"name": "item2",
-		"id": 2
-	},
-	{
-		"name": "item3",
-		"id": 3
-	}
-]
+// Services
+import ApiService from './services/api';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.state = { realAccordionData: [] }
+		this.ApiService = new ApiService();
+	}
+
+	componentDidMount() {
+		this.ApiService.getEvents({ id: 1 })
+			.then((res) => {
+				this.setState({ realAccordionData: res.data });
+			})
 	}
 
 	renderItems(item, index) {
 		return (
 			<AccordionItem
-				key={item.id}
+				key={item.idEvento}
 				index={index}
-				value={item.name}
+				value={`${item.nombre} ${item.apellido}`}
 			>
-				<li>Item1</li>
-				<li>Item2</li>
-				<li>Item3</li>
-				<li>Item4</li>
+				<li>{item.dni}</li>
+				<li>{item.mail}</li>
+				<li>{item.ciudad}</li>
+				<li>{item.alergias}</li>
+				<li>{item.enfermedades}</li>
 			</AccordionItem>
 		);
 	}
@@ -42,7 +47,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<AccordionContainer>
-				{MOCKED_ITEMS.map(this.renderItems)}
+				{this.state.realAccordionData.map(this.renderItems)}
 			</AccordionContainer>
 		);
 	}
