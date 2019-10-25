@@ -1,0 +1,33 @@
+.accordion-item {
+    &_default {
+        &_button {
+            cursor: pointer;
+            font-weight: bold;
+            color: #161616;
+            transition: all .4s;
+            background-color: white;
+            border: 1px solid #1d1d1d;
+            border-bottom: none;
+            width: 100%;
+            min-height: 40px;
+
+            &:hover {
+                background-color: #f7f7f7;
+            }
+            
+            &:focus {
+                background-color: #e2e2e2;
+            }
+        }
+
+        &_contentWrapper {
+            padding: 5px 15px;
+            border: 1px solid #1d1d1d;
+            border-bottom: none;
+        }
+
+        &:last-child {
+            border-bottom: 1px solid #1d1d1d;
+        }
+    }
+}
