@@ -25,11 +25,18 @@ class App extends React.Component {
 	}
 
 	renderItems(item, index) {
-		return <AccordionItem
-			key={item.id}
-			index={index}
-			value={item.name}
-		/>;
+		return (
+			<AccordionItem
+				key={item.id}
+				index={index}
+				value={item.name}
+			>
+				<li>Item1</li>
+				<li>Item2</li>
+				<li>Item3</li>
+				<li>Item4</li>
+			</AccordionItem>
+		);
 	}
 
 	render() {

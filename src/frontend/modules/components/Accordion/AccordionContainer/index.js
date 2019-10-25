@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * This class is the AccordionContainer component will manage which 
+ * Child is visible and keeping only the child active
+ */
 export default class AccordionContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -8,6 +12,13 @@ export default class AccordionContainer extends React.Component {
 		this.setSelectedItem = this.setSelectedItem.bind(this);
 	}
 
+	/**
+	 * This method is a callback that will set the local state 
+	 * selectedItem to the active element clicked
+	 *
+	 * @param   {Number}  value  index from the child selected
+	 *
+	 */
 	setSelectedItem(value) {
 		this.setState({ selectedItem: value })
 	}
