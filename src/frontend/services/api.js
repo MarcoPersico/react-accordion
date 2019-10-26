@@ -55,8 +55,8 @@ class Api {
     return Utils.formatURL(`${this.url}${endpoint}`, Object.assign({}, parameters));
   }
 
-  getEvents(data) {
-    return this._post(this._getEndpoint('getEvents'), data);
+  getMockedData(data) {
+    return this._post(this._getEndpoint('getMockedData'), data);
   }
 
   /**

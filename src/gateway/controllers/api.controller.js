@@ -9,12 +9,12 @@ class ApiController {
      */
     this.app = app;
     
-    this.getEvents = this.getEvents.bind(this);
+    this.getMockedData = this.getMockedData.bind(this);
   }
 
-  getEvents(req, res) {
+  getMockedData(req, res) {
     axios.post(
-      'http://localhost:4000/api/users/getEvents',
+      'http://www.mocky.io/v2/5db371ca3000007c0057b65b',
       {
         data: req.body,
       }
@@ -32,7 +32,7 @@ const apiController = controller((app) => {
   const router = app.get('router');
   const ctrl = new ApiController(app);
   return [
-    router.post('/users/getEvents', ctrl.getEvents),
+    router.post('/users/getMockedData', ctrl.getMockedData),
   ];
 });
 

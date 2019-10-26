@@ -15,6 +15,8 @@ import './AccordionItem.scss';
 class AccordionItem extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.arrow = React.createRef();
 	}
 
 	/**
@@ -25,27 +27,42 @@ class AccordionItem extends React.Component {
 	 * 								 (ideally a <li> or <p> elements)
 	 */
 	renderContent() {
+		const CLASS_CONTENT = this.props.ownClassName ?
+			this.props.contentClassName :
+			'accordion-item_default_contentWrapper';
+		const ANIMATED = this.props.animated ? 'animated fadeIn' : null;
+
 		if (this.props.activeItem === this.props.index) {
+			this.arrow.current.classList.remove('inactive');
+			this.arrow.current.classList.add('active');
 			return (
-				<div className='accordion-item_default_contentWrapper animated'>
-                    <div className='animated fadeIn'>
-                        {this.props.children}
-                    </div>
+				<div className={CLASS_CONTENT}>
+					<div className={ANIMATED}>
+						{this.props.children}
+					</div>
 				</div>
 			);
+		} else if (this.arrow.current) {
+			this.arrow.current.classList.remove('active');
+			this.arrow.current.classList.add('inactive');
 		}
 	}
 
 	render() {
+		const CLASS_HEADER = this.props.ownClassName ?
+			this.props.headerClassName :
+			'accordion-item_default_button';
+			
 		return (
 			<div className='accordion-item_default'>
 				<button
-                    className='accordion-item_default_button'
+					className={CLASS_HEADER}
 					onClick={() => this.props.onItemClicked(this.props.index)}
 				>
-					{this.props.value}
+					<span>{this.props.value}</span>
+					<i className='inactive' ref={this.arrow} />
 				</button>
-                    {this.renderContent()}
+				{this.renderContent()}
 			</div>
 		);
 	}

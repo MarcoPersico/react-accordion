@@ -1,0 +1,76 @@
+.loader {
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 0 5px;
+  }
+
+  &__bar {
+    align-self: center;
+    height: 80%;
+    width: 100%;
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  &__barSecondary {
+    border-radius: 5px;
+    height: 100%;
+    animation-duration: 2s;
+    animation-name: secondaryBar;
+    animation-iteration-count: infinite;
+    background: #e4e4e4;
+    background: rgba(241, 241, 241, 1);
+    background: -moz-linear-gradient(
+      left,
+      rgba(241, 241, 241, 1) 0%,
+      rgb(235, 235, 235) 50% 50%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    background: -webkit-gradient(
+      left top,
+      right top,
+      color-stop(0%, rgba(241, 241, 241, 1)),
+      color-stop(50%, rgb(235, 235, 235) 50%),
+      color-stop(100%, rgba(241, 241, 241, 1))
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(241, 241, 241, 1) 0%,
+      rgb(235, 235, 235) 50%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    background: -o-linear-gradient(
+      left,
+      rgba(241, 241, 241, 1) 0%,
+      rgb(235, 235, 235) 50% 50%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    background: -ms-linear-gradient(
+      left,
+      rgba(241, 241, 241, 1) 0%,
+      rgb(235, 235, 235) 50% 50%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(241, 241, 241, 1) 0%,
+      rgb(235, 235, 235) 50% 50%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#f1f1f1', GradientType=1 );
+  }
+}
+
+@keyframes secondaryBar {
+  from {
+    margin-left: 0%;
+    width: 20%;
+  }
+
+  to {
+    margin-left: 80%;
+    width: 20%;
+  }
+}

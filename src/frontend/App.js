@@ -22,31 +22,35 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.ApiService.getEvents({ id: 1 })
+		setTimeout(() => {
+			this.ApiService.getMockedData()
 			.then((res) => {
 				this.setState({ realAccordionData: res.data });
 			})
+			.catch((error) => {
+				this.setState({ realAccordionData: [error.message] })
+			})
+		}, 2000)
+
 	}
 
 	renderItems(item, index) {
 		return (
 			<AccordionItem
-				key={item.idEvento}
+				key={item.id}
 				index={index}
-				value={`${item.nombre} ${item.apellido}`}
+				value={item.name}
 			>
-				<li>{item.dni}</li>
-				<li>{item.mail}</li>
-				<li>{item.ciudad}</li>
-				<li>{item.alergias}</li>
-				<li>{item.enfermedades}</li>
+				{item.content.map((element, index) => {
+					return <li key={index}>{element.content}</li>
+				})}
 			</AccordionItem>
 		);
 	}
 
 	render() {
 		return (
-			<AccordionContainer>
+			<AccordionContainer animated>
 				{this.state.realAccordionData.map(this.renderItems)}
 			</AccordionContainer>
 		);
