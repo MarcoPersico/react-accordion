@@ -1,0 +1,23 @@
+.accordion-container {
+    &_default {
+        background-color: white;
+    }
+
+    &_placeholder {
+        position: relative;
+        background-color: white;
+        border: 1px solid #e4e4e4;
+        width: 100%;
+        height: 300px;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+    }
+
+    &_error {
+        color: #202020;
+        span {
+            font-weight: bold;
+        }
+    }
+}

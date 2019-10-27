@@ -1,17 +1,22 @@
 .accordion-item {
   &_default {
-    &_button {
+    &_header {
       cursor: pointer;
+      display: flex;
+      align-items: center;
       font-weight: bold;
       color: #161616;
       transition: all 0.4s;
-      background-color: white;
       border: 1px solid #e4e4e4;
       border-bottom: none;
       width: 100%;
-      min-height: 50px;
+      height: 50px;
       text-align: left;
       padding: 0 15px;
+
+      span {
+        flex: 90%;
+      }
 
       i {
         transition: all 0.4s;
@@ -23,8 +28,7 @@
         margin-bottom: 1px;
       }
 
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: #f7f7f7;
       }
     }
@@ -44,15 +48,23 @@
       padding: 2px 0;
       list-style: none;
     }
+
+    .active {
+      background-color: #f7f7f7;
+
+      i {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    }
+
+    .inactive {
+      background-color: white;
+
+      i {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+      }
+    }
   }
-}
-
-i.active {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-
-i.inactive {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
 }

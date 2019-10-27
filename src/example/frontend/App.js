@@ -17,19 +17,27 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { realAccordionData: [] }
+		this.state = {
+			realAccordionData: [],
+			error: { status: false, message: '' },
+		}
 		this.ApiService = new ApiService();
 	}
 
 	componentDidMount() {
 		setTimeout(() => {
 			this.ApiService.getMockedData()
-			.then((res) => {
-				this.setState({ realAccordionData: res.data });
-			})
-			.catch((error) => {
-				this.setState({ realAccordionData: [error.message] })
-			})
+				.then((res) => {
+					this.setState({ realAccordionData: res.data });
+				})
+				.catch((err) => {
+					this.setState({
+						error: {
+							status: true,
+							message: err.message
+						}
+					});
+				})
 		}, 2000)
 
 	}
@@ -39,7 +47,7 @@ class App extends React.Component {
 			<AccordionItem
 				key={item.id}
 				index={index}
-				value={item.name}
+				headerLabel={item.name}
 			>
 				{item.content.map((element, index) => {
 					return <li key={index}>{element.content}</li>
@@ -50,7 +58,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<AccordionContainer animated>
+			<AccordionContainer animated >
 				{this.state.realAccordionData.map(this.renderItems)}
 			</AccordionContainer>
 		);
